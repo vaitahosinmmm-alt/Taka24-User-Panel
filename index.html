@@ -166,7 +166,7 @@
        ✈️ Telegram Support
     </a>
 
-    <a href="https://t.me/MAFIYA_SYNDICATE" target="_blank" rel="noopener"
+    <a href="https://t.me/TAKA24_OUR_INCOME" target="_blank" rel="noopener"
        style="display:block;text-decoration:none;background:#1b2530;color:#fff;padding:13px;border-radius:10px;margin-top:10px;">
        📢 Telegram Channel
     </a>
@@ -282,7 +282,13 @@
         <label>Payment Amount</label>
         <input id="paymentAmount" type="number"
                inputmode="numeric"
-               placeholder="কত টাকা পাঠিয়েছেন?">
+               readonly
+               placeholder="Payment Amount">
+
+        <label>যে নম্বর থেকে টাকা পাঠিয়েছেন</label>
+        <input id="paymentSender" type="tel"
+               inputmode="numeric" maxlength="11"
+               placeholder="01XXXXXXXXX">
 
         <label>Transaction ID (TrxID)</label>
         <input id="paymentTrxId" type="text"

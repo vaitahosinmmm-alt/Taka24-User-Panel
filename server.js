@@ -502,6 +502,7 @@ async function start() {
 
     const plan_id = String(req.body.plan_id || "");
     const payment_method = String(req.body.payment_method || "");
+    const sender_number = String(req.body.sender_number || "").trim();
     const trx_id = String(req.body.trx_id || "").trim();
     const amount = Number(req.body.amount || 0);
 
@@ -525,6 +526,20 @@ async function start() {
       return res.status(400).json({
         ok: false,
         message: "Invalid payment method"
+      });
+    }
+
+    if (!sender_number) {
+      return res.status(400).json({
+        ok: false,
+        message: "Sender number is required"
+      });
+    }
+
+    if (!/^01[3-9]\\d{8}$/.test(sender_number)) {
+      return res.status(400).json({
+        ok: false,
+        message: "Invalid sender mobile number"
       });
     }
 
@@ -554,6 +569,7 @@ async function start() {
       daily_claim: plan.daily_claim,
       duration_days: plan.duration_days,
       payment_method,
+      sender_number,
       trx_id,
       status: "Pending",
       created_at: new Date().toISOString()

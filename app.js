@@ -2,7 +2,7 @@ const $ = s => document.querySelector(s);
 const $$ = s => document.querySelectorAll(s);
 
 const NAGAD_NUMBER = "01896184677";
-const BKASH_NUMBER = ""; // পরে add করা হবে
+const BKASH_NUMBER = "01613317181";
 
 const plans = [
   ["৳50", "30 Days"],
@@ -269,119 +269,204 @@ if (planBox) {
   `).join("");
 }
 
-let selectedPlan="";
-let selectedPaymentMethod="bKash";
-const PAYMENT_NUMBERS={bKash:"01613317181",Nagad:"01896184677"};
+let selectedPlan = "";
+let selectedPaymentMethod = "bKash";
 
-function openPayment(plan){
-  selectedPlan=plan;
-  selectedPaymentMethod="bKash";
-  const modal=$("#paymentModal");
-  if(!modal)return;
-  $("#selectedPlanText").textContent="Selected Plan: "+plan;
-  $("#paymentNumber").textContent=PAYMENT_NUMBERS.bKash;
-  $$(".pay-method").forEach(b=>b.classList.toggle("active",b.dataset.method==="bKash"));
-  modal.classList.remove("hidden");
-}
-$("#paymentClose")?.addEventListener("click",()=>$("#paymentModal")?.classList.add("hidden"));
-
-$$(".copy-pay").forEach(btn=>{
-  btn.addEventListener("click",async()=>{
-    const number=btn.dataset.number;
-    try{await navigator.clipboard.writeText(number)}catch(e){}
-    toast("Number copied: "+number);
-  });
-});
-$$(".pay-method").forEach(b=>b.addEventListener("click",()=>{
-  selectedPaymentMethod=b.dataset.method;
-  $("#paymentNumber").textContent=PAYMENT_NUMBERS[selectedPaymentMethod];
-  $$(".pay-method").forEach(x=>x.classList.toggle("active",x===b));
-}));
-$("#copyPaymentNumber")?.addEventListener("click",async()=>{
-  const n=PAYMENT_NUMBERS[selectedPaymentMethod];
-  try{await navigator.clipboard.writeText(n)}catch(e){}
-  toast("Payment number copied");
-});
-$("#submitPlanRequest")?.addEventListener("click",()=>{
-  const amount=$("#paymentAmount")?.value.trim();
-  const trx=$("#paymentTrxId")?.value.trim();
-
-  if(!amount){
-    toast("Payment amount দিন");
-    return;
-  }
-
-  if(!trx){
-    toast("TrxID দিন");
-    return;
-  }
-
-  $("#paymentPending")?.classList.remove("hidden");
-  $("#submitPlanRequest").textContent="Payment Submitted ✓";
-  $("#submitPlanRequest").disabled=true;
-
-  toast("Payment submitted — Pending");
-});
-
-window.openPayment = function(plan){
-  const modal = document.getElementById("paymentModal");
-  const text = document.getElementById("selectedPlanText");
-
-  if(!modal){
-    alert("Payment window not found");
-    return;
-  }
-
-  if(text) text.textContent = "Selected Plan: " + plan;
-
-  modal.classList.remove("hidden");
+const PAYMENT_NUMBERS = {
+  bKash: "01613317181",
+  Nagad: "01896184677"
 };
 
+const PLAN_AMOUNTS = {
+  "৳50": 50,
+  "৳100": 100,
+  "৳600": 600,
+  "৳1,500": 1500,
+  "৳3,000": 3000,
+  "৳5,000": 5000,
+  "৳10,000": 10000,
+  "৳15,000": 15000
+};
 
-document.addEventListener("click", function(e){
+function getSelectedAmount() {
+  return PLAN_AMOUNTS[selectedPlan] || 0;
+}
 
-  const choice=e.target.closest(".payment-choice");
+function updatePaymentMethod(method) {
+  selectedPaymentMethod = method;
 
-  if(choice){
-    const method=choice.dataset.method;
-    const number=PAYMENT_NUMBERS[method];
+  const number = PAYMENT_NUMBERS[method] || "";
 
-    selectedPaymentMethod=method;
+  $("#selectedMethod") && ($("#selectedMethod").textContent = method);
+  $("#paymentNumber") && ($("#paymentNumber").textContent = number);
 
-    const box=$("#selectedPayment");
-    if(box) box.classList.remove("hidden");
+  const logo = $("#selectedLogo");
+  if (logo) {
+    logo.textContent = method === "bKash" ? "bK" : "N";
+    logo.className = "choice-logo " +
+      (method === "bKash" ? "bkash-logo" : "nagad-logo");
+  }
 
-    const name=$("#selectedMethod");
-    if(name) name.textContent=method;
+  $$(".payment-choice").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.method === method);
+  });
 
-    const num=$("#paymentNumber");
-    if(num) num.textContent=number;
+  const selected = $("#selectedPayment");
+  if (selected) selected.classList.remove("hidden");
+}
 
-    const logo=$("#selectedLogo");
-    if(logo){
-      logo.textContent=method==="bKash"?"bK":"N";
-      logo.className="choice-logo "+
-        (method==="bKash"?"bkash-logo":"nagad-logo");
-    }
+function openPayment(plan) {
+  selectedPlan = plan;
+  selectedPaymentMethod = "bKash";
 
-    $$(".payment-choice").forEach(x=>{
-      x.classList.toggle("active",x===choice);
-    });
-
-    setTimeout(()=>{
-      $("#selectedPayment")?.scrollIntoView({
-        behavior:"smooth",
-        block:"center"
-      });
-    },100);
-
+  const modal = $("#paymentModal");
+  if (!modal) {
+    toast("Payment window not found");
     return;
   }
 
-  if(e.target.closest("#copyPaymentNumber")){
-    const number=PAYMENT_NUMBERS[selectedPaymentMethod];
+  const amount = getSelectedAmount();
 
-    if(!number){
+  $("#selectedPlanText") &&
+    ($("#selectedPlanText").textContent =
+      "Selected Plan: " + plan + " • Amount: ৳" + amount);
+
+  $("#paymentAmount") &&
+    ($("#paymentAmount").value = amount);
+
+  $("#paymentSender") &&
+    ($("#paymentSender").value = "");
+
+  $("#paymentTrxId") &&
+    ($("#paymentTrxId").value = "");
+
+  $("#paymentPending")?.classList.add("hidden");
+
+  const submit = $("#submitPlanRequest");
+  if (submit) {
+    submit.disabled = false;
+    submit.textContent = "Submit Payment";
+  }
+
+  updatePaymentMethod("bKash");
+  modal.classList.remove("hidden");
+}
+
+window.openPayment = openPayment;
+
+$("#paymentClose")?.addEventListener("click", () => {
+  $("#paymentModal")?.classList.add("hidden");
+});
+
+$$(".payment-choice").forEach(btn => {
+  btn.addEventListener("click", () => {
+    updatePaymentMethod(btn.dataset.method);
+  });
+});
+
+$("#copyPaymentNumber")?.addEventListener("click", async () => {
+  const number = PAYMENT_NUMBERS[selectedPaymentMethod];
+
+  if (!number) {
+    toast("Payment number not found");
+    return;
+  }
+
+  try {
+    await navigator.clipboard.writeText(number);
+  } catch (e) {}
+
+  toast(selectedPaymentMethod + " number copied ✓");
+});
+
+$("#submitPlanRequest")?.addEventListener("click", async () => {
+  const amount = Number($("#paymentAmount")?.value || 0);
+  const sender = $("#paymentSender")?.value.trim() || "";
+  const trx = $("#paymentTrxId")?.value.trim() || "";
+
+  const expectedAmount = getSelectedAmount();
+
+  if (!selectedPlan || !expectedAmount) {
+    toast("আগে একটি Plan নির্বাচন করুন");
+    return;
+  }
+
+  if (amount !== expectedAmount) {
+    toast("সঠিক Payment Amount দিন: ৳" + expectedAmount);
+    return;
+  }
+
+  if (!sender) {
+    toast("যে নম্বর থেকে টাকা পাঠিয়েছেন সেটি দিন");
+    $("#paymentSender")?.focus();
+    return;
+  }
+
+  if (!/^01[3-9]\d{8}$/.test(sender)) {
+    toast("সঠিক 11 digit mobile number দিন");
+    $("#paymentSender")?.focus();
+    return;
+  }
+
+  if (!trx) {
+    toast("TrxID দিন");
+    $("#paymentTrxId")?.focus();
+    return;
+  }
+
+  const submit = $("#submitPlanRequest");
+  if (submit) {
+    submit.disabled = true;
+    submit.textContent = "Submitting...";
+  }
+
+  try {
+    await submitPlanRequest(
+      Object.keys(PLAN_AMOUNTS).find(k => PLAN_AMOUNTS[k] === expectedAmount)
+        ? "P" + expectedAmount
+        : selectedPlan,
+      amount,
+      selectedPaymentMethod,
+      trx
+    );
+
+    $("#paymentPending")?.classList.remove("hidden");
+
+    if (submit) {
+      submit.textContent = "Payment Submitted ✓";
+    }
+
+    toast("Payment submitted — Pending approval");
+
+    setTimeout(() => {
+      $("#paymentModal")?.classList.add("hidden");
+    }, 900);
+
+    if (typeof loadUserDashboard === "function") {
+      await loadUserDashboard().catch(() => {});
+    }
+  } catch (err) {
+    if (submit) {
+      submit.disabled = false;
+      submit.textContent = "Submit Payment";
+    }
+
+    toast(err.message || "Payment submission failed");
+  }
+});
+
+document.addEventListener("click", function(e) {
+  const choice = e.target.closest(".payment-choice");
+
+  if (choice) {
+    updatePaymentMethod(choice.dataset.method);
+    return;
+  }
+
+  if (e.target.closest("#copyPaymentNumber")) {
+    const number = PAYMENT_NUMBERS[selectedPaymentMethod];
+
+    if (!number) {
       toast("আগে bKash অথবা Nagad নির্বাচন করুন");
       return;
     }
@@ -389,24 +474,17 @@ document.addEventListener("click", function(e){
     navigator.clipboard?.writeText(number);
     toast("Number copied ✓");
   }
-
 });
 
-console.log("✅ PAYMENT OPTION CLICK FIXED");
-
-document.addEventListener("click", function(e){
-  const nav=e.target.closest("[data-view]");
-  if(nav){
-    const modal=$("#paymentModal");
-    if(modal) modal.classList.add("hidden");
-  }
-});
-
+console.log("✅ PAYMENT SYSTEM READY");
+console.log("bKash:", PAYMENT_NUMBERS.bKash);
+console.log("Nagad:", PAYMENT_NUMBERS.Nagad);
 
 
 /* =========================================================
    TAKА24 PREMIUM INPUT MODAL
    ========================================================= */
+
 window.taka24Prompt = function(title, placeholder, type = "text") {
   return new Promise((resolve) => {
     const modal = document.getElementById("taka24InputModal");
@@ -614,6 +692,7 @@ async function submitPlanRequest(plan_id, amount, payment_method, trx_id) {
       plan_id,
       amount,
       payment_method,
+      sender_number: document.getElementById("paymentSender")?.value.trim() || "",
       trx_id
     })
   });
