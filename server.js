@@ -734,13 +734,6 @@ async function start() {
       });
     }
 
-    if (amount > user.balance) {
-      return res.status(400).json({
-        ok: false,
-        message: "Insufficient balance"
-      });
-    }
-
     if (!["bKash", "Nagad"].includes(method)) {
       return res.status(400).json({
         ok: false,
@@ -748,10 +741,28 @@ async function start() {
       });
     }
 
-    if (!/^01\d{9}$/.test(payout_number)) {
+    if (!/^01[3-9]\d{8}$/.test(payout_number)) {
       return res.status(400).json({
         ok: false,
         message: "Enter a valid Bangladesh mobile number"
+      });
+    }
+
+    const currentBalance = Number(user.balance || 0);
+
+    const pendingWithdrawals = db.data.withdrawals
+      .filter(w =>
+        w.user_id === user.id &&
+        w.status === "Pending"
+      )
+      .reduce((sum, w) => sum + Number(w.amount || 0), 0);
+
+    const availableBalance = currentBalance - pendingWithdrawals;
+
+    if (amount > availableBalance) {
+      return res.status(400).json({
+        ok: false,
+        message: `Insufficient balance. Available balance: ৳${Math.max(0, availableBalance)}`
       });
     }
 
@@ -764,22 +775,6 @@ async function start() {
       status: "Pending",
       created_at: new Date().toISOString()
     };
-
-    const pendingWithdrawals = db.data.withdrawals
-      .filter(w =>
-        w.user_id === user.id &&
-        w.status === "Pending"
-      )
-      .reduce((sum, w) => sum + Number(w.amount || 0), 0);
-
-    const availableBalance = Number(user.balance || 0) - pendingWithdrawals;
-
-    if (amount > availableBalance) {
-      return res.status(400).json({
-        ok: false,
-        message: "Insufficient available balance"
-      });
-    }
 
     db.data.withdrawals.push(withdrawal);
 
@@ -803,7 +798,8 @@ async function start() {
       ok: true,
       message: "Withdrawal request submitted",
       withdrawal,
-      balance: user.balance
+      balance: currentBalance,
+      available_balance: availableBalance - amount
     });
   });
 
