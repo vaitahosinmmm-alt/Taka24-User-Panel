@@ -1,0 +1,602 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Test User",
+      "mobile": "01900000001",
+      "password_hash": "$2b$12$BaeauI6pM75LeR9lmayJg.3LULe95JZIjBxM/DHK9WQAJyOd41DGu",
+      "referral_code": "T2400001",
+      "balance": 0,
+      "created_at": "2026-09-28T06:44:41.746Z",
+      "payout_number": ""
+    },
+    {
+      "id": 2,
+      "name": "Abdul Kader",
+      "mobile": "Kader",
+      "password_hash": "$2b$12$XvPSmUNpZdudFB/tuP.XdegJPoz2VuxReUJRMuASgnviVNJGfuUha",
+      "referral_code": "2345",
+      "balance": 0,
+      "created_at": "2026-09-28T06:57:45.319Z"
+    },
+    {
+      "id": 3,
+      "name": "Tahosin",
+      "mobile": "01928355464",
+      "password_hash": "$2b$12$OQ5JDzm92BoFa2DmjRxTY.DM7XXWpleQ8lteXw2vCLSbiWjvF3rI2",
+      "referral_code": "T2400004",
+      "balance": 0,
+      "payout_number": "",
+      "referred_by": null,
+      "created_at": "2026-09-28T08:06:58.326Z"
+    },
+    {
+      "id": 4,
+      "name": "Robiul Islam",
+      "mobile": "01742645710",
+      "password_hash": "$2b$12$MR1poS7MkZWqtVXsvDNwW.4eyEgAjUjXPOXk09Vx0wpSpLXn5pGM.",
+      "referral_code": "T2400005",
+      "balance": 0,
+      "payout_number": "",
+      "referred_by": "T2400004",
+      "created_at": "2026-09-28T08:28:41.379Z"
+    },
+    {
+      "id": 5,
+      "name": "Tahosin77",
+      "mobile": "01924415521",
+      "password_hash": "$2b$12$6eLMRQQJ3HTg.b0ymsdb..5XHLIgc6WuX2EHL967iS7bCCvtky9tO",
+      "referral_code": "T2400006",
+      "balance": 0,
+      "payout_number": "",
+      "referred_by": "Vv",
+      "created_at": "2026-09-28T09:10:38.772Z"
+    }
+  ],
+  "plan_requests": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "plan_id": "P50",
+      "amount": 50,
+      "daily_claim": 5,
+      "duration_days": 90,
+      "payment_method": "Nagad",
+      "trx_id": "TESTTRX001",
+      "status": "Pending",
+      "created_at": "2026-09-28T07:51:42.893Z"
+    }
+  ],
+  "withdrawals": [],
+  "transactions": [],
+  "notifications": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "type": "plan_pending",
+      "message": "Your ৳50 plan payment is pending admin verification.",
+      "read": false,
+      "created_at": "2026-09-28T07:51:42.894Z"
+    }
+  ],
+  "sessions": [
+    {
+      "token": "d994a0c022c2bcdb69bf70d6d22025b5d38682041650b954af551dc2e3a8b667",
+      "user_id": 1,
+      "created_at": "2026-09-28T06:44:41.784Z"
+    },
+    {
+      "token": "7deee4e0ea2cae92dbee1a83d59fb7deb037e06e13d21108dd7d7c8dcee9c83c",
+      "user_id": 1,
+      "created_at": "2026-09-28T06:45:28.518Z"
+    },
+    {
+      "token": "e7caf0e89f322aead79a8df28b8b4db15b5c4de5a1462e99821f6d10da7d97db",
+      "user_id": 2,
+      "created_at": "2026-09-28T06:57:45.334Z"
+    },
+    {
+      "token": "4e6a9a32d1401176e7dfb4b10d50f1c4b5a155ef123bc9f5661504223bdbb945",
+      "user_id": 2,
+      "created_at": "2026-09-28T07:01:04.540Z"
+    },
+    {
+      "token": "66526d18e4c55af1f8e6685bff25e9cde4bf49687a05252f47a10b8cb1753325",
+      "user_id": 2,
+      "created_at": "2026-09-28T07:06:40.161Z"
+    },
+    {
+      "token": "0623e3e8df5d6bd4124b25821543d439a35eeeb5ea62624abb69215660676422",
+      "user_id": 2,
+      "created_at": "2026-09-28T07:10:28.983Z"
+    },
+    {
+      "token": "25f103dc277914ce661d871f38e1ead12a92eae272d41167d82b39dbbbde4d15",
+      "user_id": 2,
+      "created_at": "2026-09-28T07:13:46.991Z"
+    },
+    {
+      "token": "0754b49407163c47df40016f83ad10d75a1c1958905375463945e3847e4e106c",
+      "user_id": 2,
+      "created_at": "2026-09-28T07:25:09.506Z"
+    },
+    {
+      "token": "bff2e759186e0738d7520f4a6ae9b5b6654ccbd4cf718bb1bada04e09a5b0890",
+      "user_id": 2,
+      "created_at": "2026-09-28T07:25:24.061Z"
+    },
+    {
+      "token": "6b624b7338853097a9f17e913ec24a2fee12cb66545a3790643a5c9d79476b61",
+      "user_id": 2,
+      "created_at": "2026-09-28T07:42:27.142Z"
+    },
+    {
+      "token": "4e0d2b7ec92a031e00f83bcd1c62398e86ae7b22cdcee0a99da0061fb8285f71",
+      "user_id": 1,
+      "created_at": "2026-09-28T07:50:52.261Z"
+    },
+    {
+      "token": "33a0ee8f64d82c846794acc85932973b23e0bfebc984748d387deeb1814e888e",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:06:58.356Z"
+    },
+    {
+      "token": "b1a54cb0101aed9a40700c41ca364e3f8f84181494d2a45e1cc0cfc54eba6911",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:07:15.827Z"
+    },
+    {
+      "token": "7ba8412bfe9ec4c438d6696fae57c686c98432f9490b5bfd75dc64f8de4e9c5e",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:07:17.092Z"
+    },
+    {
+      "token": "e87e2e10bb0eba0afea3b1b2ed2e1455b603adb194f9b535bcd85ed7bdb3fb14",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:07:57.526Z"
+    },
+    {
+      "token": "74169aa54c7c8ca5d47e6ee5d401012b4034642bc54d68404e9dc6c51cc455bc",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:16:40.358Z"
+    },
+    {
+      "token": "900c5088748c26c8d025f14b1290b407a07e5ccd31ceb3f3da803b1d4fa8c85e",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:17:22.007Z"
+    },
+    {
+      "token": "64c25875509a0e7517cf91905f25520eeb909c2dc8156f35acb4f02b891720da",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:17:23.282Z"
+    },
+    {
+      "token": "b08e4fd45d9c1519bfe37ce17e246b97ca470f68cf5720f8cf622eec0167ecca",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:22:06.767Z"
+    },
+    {
+      "token": "cf386748c4172ddd23652b068c631e47f79486e94964affd0b2a88cf845e6d9e",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:22:07.745Z"
+    },
+    {
+      "token": "646e1ab8435013464c8aefd7e30ac7d048061ff4e51bd1ac3054adff588b8fc3",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:24:54.421Z"
+    },
+    {
+      "token": "3fd7dd1523103074d59326dc085243bf8a3b4d82a93042719742beb44b496328",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:24:56.201Z"
+    },
+    {
+      "token": "4d7f6693cc8549aac69c00034d1e00ca8bb93542ee1c6d553ec3e5b07489656a",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:17.332Z"
+    },
+    {
+      "token": "24ced0acd0b7ef1c014979e4d25b382db3a4866015d948901a6bf07e51e0f336",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:17.333Z"
+    },
+    {
+      "token": "4b716ea043b5ef3f5b356c9d30bcfd21f444f5e931754233fb42db5dfc3c0e0b",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:18.841Z"
+    },
+    {
+      "token": "d0a18fb3175ec1a3357a5dbb082ed11e2e6b5dce38d9212935ac4a0fddcf5a1f",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:20.764Z"
+    },
+    {
+      "token": "d3cde452a18724aa06fd5fce911d5c0c1d2d30c47f705d60bf2a3edeededa6f3",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:21.589Z"
+    },
+    {
+      "token": "1ba2ec96131e963c8b810bec3be006dae29e9af44b5da1797fc4428082af924a",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:22.376Z"
+    },
+    {
+      "token": "d083cd8aaf05dcfbb0d15cdba8fe24d29b44535bf6af2b97649371cf315bbf06",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:23.855Z"
+    },
+    {
+      "token": "3a6fa89cadeb693f629d1a09173393215eaba99c75c2620ed7e8110046a3a4d5",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:23.855Z"
+    },
+    {
+      "token": "e9ae7dfe89b42b2fe538613f7ef911d85e98debd027410f848674220ecd97565",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:24.540Z"
+    },
+    {
+      "token": "bc030a9e91caa4b53017a179e0c267b0b263c77a3c2b446c23960e0426770add",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:26.062Z"
+    },
+    {
+      "token": "336ae54701530fe36244e5921b38765363327396ac10eb5aa47af2654b9219cf",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:26.803Z"
+    },
+    {
+      "token": "d79a5de6d21f4a0eff288f275f83a8714acb4e5b017f7821f3f2aa80a178a6bb",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:27.598Z"
+    },
+    {
+      "token": "625200b42aa334c6269ef67c07c14a79df4239b5147790fa113e28bfafb708d4",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:28.382Z"
+    },
+    {
+      "token": "504df76427e53a19a97dab41436b2bae5aaa82273922bb32929044a9f7deded2",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:29.979Z"
+    },
+    {
+      "token": "4a5eb17ada0432a6fc516376cc409fcd8996df61b7a9030d4195406c0d2f7379",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:30.676Z"
+    },
+    {
+      "token": "0cd22051a460cd5a349906882dba7dc718d00a7240d543a78222dc9bbb1c7d21",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:31.252Z"
+    },
+    {
+      "token": "b8b16e96d190629207fd2f68d28fca46cfe9eade638166285303f7d7e22621e4",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:31.727Z"
+    },
+    {
+      "token": "b366d9c42c5f55f1b2ece3f0337db028de6be3793df3f763c263b9d7d2d542a8",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:32.214Z"
+    },
+    {
+      "token": "e5af3849392a92ba4691b09e4f83db8895b3d017694e08aedee6b6ed12b8f957",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:32.707Z"
+    },
+    {
+      "token": "bf569cf7fe84855c24913e891c308cb17ec03044d544937f5ef0ae6904b391bf",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:33.291Z"
+    },
+    {
+      "token": "c97487dda97f7df9cb60091dac2acc5ca63dd86c4ca28bfb4432eea900aad032",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:33.764Z"
+    },
+    {
+      "token": "14853ceaac81eea637ae6bef7c1f01510aca11ec3b094f2e80629843079953eb",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:35.839Z"
+    },
+    {
+      "token": "6aca9df62347cb0e53cffac299855349938ed4cf0eea5dcb893d8ee8d10c3fc7",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:36.597Z"
+    },
+    {
+      "token": "ec12734113227e93a306e132f55455135d96687667862531796d7248ea9e058f",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:37.191Z"
+    },
+    {
+      "token": "1f38509473cb8dabd97578a63cd3dcbd39384797400d1f7ae3f399dba4b64200",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:37.192Z"
+    },
+    {
+      "token": "98114055776217091c309c6b9bc7a557acad9f108744cb8bd86353b78ce58ec3",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:39.296Z"
+    },
+    {
+      "token": "d694df79c8a32395c54f48ae982bdad06403180812ca7f010b95e5993e2afdf7",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:40.957Z"
+    },
+    {
+      "token": "648cb525878b6bd120e7255dc1899bf1f8c4594ee2bc32651d75eae99920bf62",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:40.958Z"
+    },
+    {
+      "token": "63c0afd8abb85189308140b282fab23040b1db5907ba577cc86d83e96936dd7f",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:41.657Z"
+    },
+    {
+      "token": "7ee5c7561f4c5f8fa3610c6adfd9997e97ad5868d11a59a37c1c8a3b932539cd",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:42.362Z"
+    },
+    {
+      "token": "d51d4e1b87cb7183bb3c279e78d2ccf15de35ee89897803774a894a230bbdda1",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:43.787Z"
+    },
+    {
+      "token": "7b5978feedaed1f9c5ad0cb6467477034bbb3c0e0da5f121c6b387cfc7165f24",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:43.787Z"
+    },
+    {
+      "token": "22d4f81dee8d944ae8296dc5284b19918c3936047d2fa1531dc0ad4311ac65b6",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:44.450Z"
+    },
+    {
+      "token": "6609d9d45c573b5d23190d1ceff6702077c4e000ba027658782c8575c9d63c4e",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:46.117Z"
+    },
+    {
+      "token": "737a23ff0c7c5db7f8f0cbf2d17eb4daa9db23a24d3177966badf0c20d32e20b",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:46.118Z"
+    },
+    {
+      "token": "9af8731f24c00d728d53aea03997ecee59631d553de0b2ae3a86f38e0830bd6f",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:47.214Z"
+    },
+    {
+      "token": "fd5d9ef24e94738021a88a10ac4e4debefc976ff039e32ed193d028d92390cfd",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:47.215Z"
+    },
+    {
+      "token": "fea50b520690ad3ba3c31bccc27283b15fd280a17d8abf4b17d6a7ee6df186cf",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:47.353Z"
+    },
+    {
+      "token": "de0d0021c5411e7f933318429516419f0b5e76ed935160660dd49f0f56fd97c5",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:26:47.354Z"
+    },
+    {
+      "token": "050b05d7938467c8aeab4c61abc533539db3394b8a28fd919a1fd595f89cd38f",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:27:20.102Z"
+    },
+    {
+      "token": "3b04253bc08a2b29f1791c4bdf8dd411ac9085b2e4724ad221b2f1e5609110e5",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:27:22.254Z"
+    },
+    {
+      "token": "dea9b3c16af78d43990738ddd79528fa8d9bfc56c826e249a1d83b5a277d2b7d",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:27:22.853Z"
+    },
+    {
+      "token": "a56e9b60161be0271827006138989d132c32ab4b71ea50028fdbc76ae925a880",
+      "user_id": 4,
+      "created_at": "2026-09-28T08:28:41.394Z"
+    },
+    {
+      "token": "0315ce93d1c5534eff2b33514c9cf34fd4ef03ae032998670c8fef23e91f8690",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:32:38.222Z"
+    },
+    {
+      "token": "ce2db0b6f6066b8c72aa9f547ae8cbfc4da20c2ff8d2de3bcb846a7e7a5f9f69",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:34:18.173Z"
+    },
+    {
+      "token": "6dbd6c3da18855c9a0ed6aed4a5bf09bc055f9b0892b594993c8f4846a8ce885",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:34:18.441Z"
+    },
+    {
+      "token": "420b8f124871b4253920b9ff2cc73e68927ba5394fe0aa74014ea9aefdd68142",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:34:19.171Z"
+    },
+    {
+      "token": "c19ca63c76d2615d89b6aa0ef3b6d44fe360a6dbd46ec32d597a8e63eade5da0",
+      "user_id": 4,
+      "created_at": "2026-09-28T08:35:12.379Z"
+    },
+    {
+      "token": "89e99db6ed162a9140f6898596587591c47082b517f6a7b6397517b36e05d288",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:43:11.290Z"
+    },
+    {
+      "token": "069b1ab4f3c0eca28c307a2a7672be5ffe27f5b471a9829da1f7d0abfbb86386",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:43:26.140Z"
+    },
+    {
+      "token": "22c374afac7730f820f08a42df2223ae8727a186939397a5a9c1fe0eee00e389",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:43:26.845Z"
+    },
+    {
+      "token": "994736ff9459be8571349e1ea381e5d450e0f946a62ad81dc9d70cf576e731d3",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:43:52.110Z"
+    },
+    {
+      "token": "64b80a7945244f960fb0b2a50a596cab8a9fb3a98a41bcb071e1b357de1e701a",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:43:53.001Z"
+    },
+    {
+      "token": "059932d50b81c0fbd82c43be3236f9d7208c38c5926fe28f2493cad7acfab226",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:45:35.011Z"
+    },
+    {
+      "token": "7ac50e3e00e757e7c221349e0596facc6a8d2c9fd39a93c731084ea091a4635b",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:46:01.964Z"
+    },
+    {
+      "token": "e49966dbce3f355ae8895a061c4121f12b0b9eef5efdf09ce6249e8fa7cb92f0",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:46:02.632Z"
+    },
+    {
+      "token": "4e28694117310815790b2e5bc37a5b5e572a28304bdc18b5d3465734e5cbbad5",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:51:29.218Z"
+    },
+    {
+      "token": "1284e711492f54465282bb6f0c1bc1b842ccf4dd1d4c0aa50729763fd0288bb2",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:57:03.548Z"
+    },
+    {
+      "token": "3e8311330509b3df599dc5fc644ff675514d29eb5ba7205e6a22b6c95b9b7278",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:57:04.516Z"
+    },
+    {
+      "token": "54ca9780c2ede6f7ea39893a6d5032ed47436816cfff275d142f008fee19d264",
+      "user_id": 3,
+      "created_at": "2026-09-28T08:58:12.695Z"
+    },
+    {
+      "token": "d9de5b6dd883aa407d315fd8adcb3955121b2398228d597a98a40563e5e14072",
+      "user_id": 2,
+      "created_at": "2026-09-28T09:01:39.898Z"
+    },
+    {
+      "token": "b58288a142000ed66b7c0830433372522270f001b3f9d34eba738eb8235f36b3",
+      "user_id": 3,
+      "created_at": "2026-09-28T09:02:43.351Z"
+    },
+    {
+      "token": "d56e80a21e5d26fb877ae453ec0f27123e80f10deaaa143d8075e153100fcb64",
+      "user_id": 3,
+      "created_at": "2026-09-28T09:02:44.050Z"
+    },
+    {
+      "token": "08a9720e5c6969f087d0ec9348749490b060dd0422dd255d6247f5ad87ac26eb",
+      "user_id": 3,
+      "created_at": "2026-09-28T09:04:26.292Z"
+    },
+    {
+      "token": "cc2c9694d5685c860fc738ce53980e56a92032315234038b843664d3655c1689",
+      "user_id": 3,
+      "created_at": "2026-09-28T09:04:26.867Z"
+    },
+    {
+      "token": "a82f20746f0f35d2ed65c0187b33c9d0bd436b7030e866d909bc81e082c45b90",
+      "user_id": 3,
+      "created_at": "2026-09-28T09:05:18.767Z"
+    },
+    {
+      "token": "e14b02b131b8cc28cb5b7f596a981b24886e95beedc70b5fe62f17a1b1ae59e6",
+      "user_id": 4,
+      "created_at": "2026-09-28T09:09:39.123Z"
+    },
+    {
+      "token": "ca6b7bc0bb37a3b4184223c272c45bb6f06ec6c8d07602051340352759bd68bc",
+      "user_id": 5,
+      "created_at": "2026-09-28T09:10:38.777Z"
+    },
+    {
+      "token": "7f60789c85f37530cf5dbaed141aa0c70d7c984850f048128d7457de8e6b2044",
+      "user_id": 5,
+      "created_at": "2026-09-28T09:37:56.992Z"
+    },
+    {
+      "token": "e700cfc12bbf5b42e52cae8ed9c6b86a2b00f4b9c1339116f374fa5f73d6f371",
+      "user_id": 5,
+      "created_at": "2026-09-28T09:37:57.641Z"
+    },
+    {
+      "token": "3a6fd9b3ad47b745c380fff5242b1802b75fecd565c2f51a846f49c502831d41",
+      "user_id": 3,
+      "created_at": "2026-09-28T09:43:44.344Z"
+    },
+    {
+      "token": "e25274269f9fb365c9be27a79df68b66d38e2480de80b1c6897979ee15a77c02",
+      "user_id": 4,
+      "created_at": "2026-09-28T09:44:18.965Z"
+    },
+    {
+      "token": "5956a0f14551503eff78dd66845d8769a260871b0c93d64383111f49b18dc8c2",
+      "user_id": 4,
+      "created_at": "2026-09-28T09:44:24.074Z"
+    },
+    {
+      "token": "8dcb540854acccdfe086fba5739536231be3c96f81adc81bb968c25c3436713c",
+      "user_id": 3,
+      "created_at": "2026-09-28T09:49:26.668Z"
+    },
+    {
+      "token": "e4a254e5d046c0302c726ee405f125ebe73ec5250e9a1b716617eff7c561f782",
+      "user_id": 3,
+      "created_at": "2026-09-28T09:49:27.978Z"
+    },
+    {
+      "token": "6db7f9184d1a54a8fe3efa437f3c2d0db0420c512d89f63b6042f33f1baf1ac9",
+      "user_id": 3,
+      "created_at": "2026-09-28T10:03:54.972Z"
+    },
+    {
+      "token": "886a87748887aa551408bd1fcb8060ea48e1ff1a9daeb05f59e0f3d87223db33",
+      "user_id": 3,
+      "created_at": "2026-09-28T10:08:49.913Z"
+    },
+    {
+      "token": "23aa795e0f2cfb5975da7357a5f55df1811740b9127e39008f35763533135217",
+      "user_id": 3,
+      "created_at": "2026-09-28T10:08:52.313Z"
+    },
+    {
+      "token": "6a5dec082cf6351469f0c9ec87aefaf1b886f6254c1c24d86a13684c9729c5c1",
+      "user_id": 3,
+      "created_at": "2026-09-28T10:09:26.427Z"
+    },
+    {
+      "token": "5b0d1444fb1c347797dde2708c7729aa5b850376c359166b741875392e242fa8",
+      "user_id": 3,
+      "created_at": "2026-09-28T11:21:17.910Z"
+    }
+  ],
+  "nextIds": {
+    "users": 6,
+    "plan_requests": 2,
+    "withdrawals": 1,
+    "transactions": 1,
+    "notifications": 2
+  },
+  "active_plans": []
+}
