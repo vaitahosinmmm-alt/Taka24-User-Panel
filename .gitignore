@@ -5,3 +5,4 @@ node_modules/
 *.backup
 *.snapshot.json
 taka24.json
+taka24.json.*
