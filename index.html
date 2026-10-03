@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Taka24 — Smart Earning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <div id="toast" class="toast"></div>
+
+  <!-- AUTH -->
+  <section id="auth" class="auth page active">
+    <div class="auth-bg"></div>
+    <div class="auth-inner">
+      <div class="brand big"><span class="crown">♛</span><b>Taka24</b><small>Smart Earning • Better Tomorrow</small></div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-auth="login">Login</button>
+        <button class="auth-tab" data-auth="register">Register</button>
+      </div>
+
+      <form id="loginForm" class="auth-card">
+        <h2>Login</h2><p>Welcome back to your earning journey</p>
+        <label>Mobile Number</label>
+        <div class="input"><span>◧</span><input required placeholder="01XXXXXXXXX"></div>
+        <label>Password</label>
+        <div class="input"><span>♙</span><input required type="password" placeholder="Enter your password"><button type="button" class="eye">◉</button></div>
+        <button class="gold-btn" type="submit">Login</button>
+        <a class="forgot" href="#" id="forgotLink">Forgot Password?</a>
+        <div class="or"><span>OR</span></div>
+        <button class="outline-btn" type="button" id="createAccount">New here? Create an account</button>
+      </form>
+
+      <form id="registerForm" class="auth-card hidden">
+        <h2>Create Your Account</h2><p>Join Taka24 and start your earning journey</p>
+        <label>Full Name *</label><div class="input"><input required placeholder="Enter your full name"></div>
+        <label>Mobile Number *</label><div class="input"><input required placeholder="01XXXXXXXXX"></div>
+        <label>Password *</label><div class="input"><input required type="password" placeholder="Enter your password"></div>
+        <label>Confirm Password *</label><div class="input"><input required type="password" placeholder="Confirm your password"></div>
+        <label>Referral Code (Optional)</label><div class="input"><input placeholder="Enter referral code"></div>
+        <button class="gold-btn" type="submit">Register</button>
+        <div class="small-center">Already have an account? <a href="#" id="goLogin">Login</a></div>
+      </form>
+
+      <form id="forgotForm" class="auth-card hidden">
+        <h2>Forgot Password</h2><p>Enter your mobile number and we'll send instructions to reset your password.</p>
+        <label>Mobile Number</label><div class="input"><input required placeholder="01XXXXXXXXX"></div>
+        <button class="gold-btn" type="submit">Send Reset Link</button>
+        <button class="link-btn" type="button" id="backLogin">Back to Login</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- APP SHELL -->
+  <section id="dashboard" class="page">
+    <aside class="sidebar">
+      <div class="brand side"><span class="crown">♛</span><b>Taka24</b></div>
+      <nav>
+        <button class="nav-item active" data-view="home">⌂ <span>Home</span></button>
+        <button class="nav-item" data-view="plans">▣ <span>Plans</span></button>
+        <button class="nav-item" data-view="claim">♔ <span>Claim / Withdraw</span></button>
+        <button class="nav-item" data-view="transactions">▤ <span>Transactions</span></button>
+        <button class="nav-item" data-view="profile">◉ <span>Profile</span></button>
+        <button class="nav-item" data-view="settings">⚙ <span>Settings</span></button>
+      </nav>
+      <button class="logout" id="logout">↪ Logout</button>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-crown">♛</span><b>Taka24</b><small>Smart Earning • Better Tomorrow</small></div>
+        <div class="top-actions"><button aria-label="Notifications">♧</button><button aria-label="Profile">●</button></div>
+      </header>
+
+      <!-- HOME -->
+      <div class="view active" id="view-home">
+        <div class="hero-title"><div class="hero-crown">♛</div><h1>Taka24</h1><p>Smart Earning • Better Tomorrow</p></div>
+
+        <div class="stats">
+          <div class="stat"><span class="stat-icon">▣</span><small>Balance</small><strong id="homeBalance">৳ 0</strong></div>
+          <div class="stat"><span class="stat-icon">▤</span><small>Active Plan</small><strong>৳ 0</strong><em>(No Active Plan)</em></div>
+          <div class="stat"><span class="stat-icon">🎁</span><small>Today's Claim</small><strong>৳ 0</strong><em>⌄</em></div>
+        </div>
+
+        <div class="invite panel">
+          <div class="invite-copy">
+            <h3>Invite &amp; Earn</h3>
+            <p>Share your personal referral link with your friends.</p>
+
+            <div style="margin:10px 0 6px;color:#9aa8b5;font-size:12px;">Your Referral Code</div>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <div id="referralCode" style="flex:1;background:#08131d;border:1px solid #70562c;border-radius:10px;padding:10px;color:#ffc943;font-weight:700;">Loading...</div>
+              <button class="gold-btn small" onclick="copyReferralLink()">Copy</button>
+            </div>
+
+            <div id="directReferralLink" style="margin-top:8px;background:#08131d;border:1px solid #243746;border-radius:10px;padding:9px;color:#19c8ff;font-size:12px;word-break:break-all;">Referral link will appear here</div>
+            <div style="margin-top:8px;color:#9aa8b5;font-size:12px;">
+              Referrals: <b id="referralCount" style="color:#fff;">0</b>
+              &nbsp; • &nbsp;
+              Bonus: <b id="referralBonus" style="color:#ffc943;">৳0</b>
+            </div>
+          </div>
+          <div class="invite-art" aria-hidden="true"><span>●●</span><span>●●●</span><b>♛</b><strong>🎁</strong><i>✦</i></div>
+        </div>
+
+        <div class="panel progress"><h3>Active Plan Progress</h3><div class="progress-row"><div class="circle"><b>0%</b></div><div class="progress-copy"><strong>No Active Plan</strong><p>Daily Claim: ৳ 0<br>Duration: —</p></div><span class="days-inline">No active plan</span></div><div class="bar"><i style="width:0%"></i></div></div>
+
+        <div class="panel recent-panel"><h3>Recent Transaction History</h3><div id="recent"></div></div>
+      </div>
+
+      <!-- PLANS -->
+      <div class="view" id="view-plans">
+        <div class="page-title"><h1>Choose Your Plan</h1><p>Select a plan that fits your goals</p></div>
+        <div class="plans" id="plans"></div>
+      </div>
+
+      <!-- CLAIM -->
+      <div class="view" id="view-claim">
+        <div class="page-title"><h1>Claim / Withdraw</h1><p>Manage your daily claim and withdrawals</p></div>
+        <div class="claim-grid">
+          <div class="panel claim-card"><div class="claim-head"><span>🎁</span><div><small>Today's Claim</small><strong>৳ 0</strong></div><b class="pill green">Automatic Daily Claim</b></div><p>Your daily claim will be added automatically at 12:00 AM (server time).</p><button class="gold-btn" id="claimBtn">Claim Now</button></div>
+          <div class="panel">
+            <h3>Withdraw Amount</h3><div class="input"><input id="withdrawAmount" type="number" placeholder="Enter amount (৳)"></div>
+            <div class="quick"><button data-amt="100">৳100</button><button data-amt="500">৳500</button><button data-amt="1000">৳1,000</button><button data-amt="2000">৳2,000</button></div>
+            <h4>Select Method</h4><div class="methods"><button class="method active">bKash</button><button class="method">Nagad</button></div>
+            <div class="withdraw-info"><span>Minimum Withdrawal <b>৳0</b></span><span>Fee <b>2%</b></span><span>Request Status <b class="gold-text">Pending</b></span></div>
+            <button class="gold-btn" id="withdrawBtn">Request Withdrawal</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRANSACTIONS -->
+      <div class="view" id="view-transactions">
+        <div class="page-title"><h1>Transaction History</h1><p>Track your claims, withdrawals and plans</p></div>
+        <div class="panel"><div class="filters"><button class="active">All</button><button>Claim</button><button>Withdraw</button><button>Plan</button></div><div id="transactions"></div></div>
+      </div>
+
+      <!-- PROFILE -->
+      <div class="view" id="view-profile">
+        <div class="page-title"><h1>Profile</h1><p>Manage your account information</p></div>
+        <div class="panel profile-head"><div class="avatar">●</div><div><h2 id="profileName">User</h2><p id="profileMobile">01XXXXXXXXX</p></div></div>
+        <div class="panel"><h3>Account Information</h3><div class="info-list"><div>Active Plan <b>No Active Plan</b></div><div>Balance <b id="profileBalance">৳0</b></div><div>Referral / Commission <b>৳0</b></div></div></div>
+        <div class="panel"><h3>Payout Information</h3><div class="payout">Saved bKash/Nagad Number<br><b id="profilePayout">Not set</b><button class="outline-btn small" id="changePayoutBtn">Change Payout Number</button></div></div>
+        <div class="panel"><h3>Security</h3><button class="outline-btn small" id="changePasswordBtn">Change Password</button></div>
+      </div>
+
+      <!-- SETTINGS -->
+      <div class="view" id="view-settings">
+        <div class="page-title"><h1>Settings</h1><p>Account and application preferences</p></div>
+        <div class="panel" id="taka24Support" style="margin-bottom:16px;">
+    <h3>🛟 Support Center</h3>
+    <p style="color:#9aa8b5;font-size:13px;">Need help? Contact our support team.</p>
+
+    <a href="https://wa.me/8801742645710" target="_blank" rel="noopener"
+       style="display:block;text-decoration:none;background:#123b2d;color:#fff;padding:13px;border-radius:10px;margin-top:10px;">
+       📱 WhatsApp Support
+    </a>
+
+    <a href="https://t.me/SUPP0RT_ID_24" target="_blank" rel="noopener"
+       style="display:block;text-decoration:none;background:#12324a;color:#fff;padding:13px;border-radius:10px;margin-top:10px;">
+       ✈️ Telegram Support
+    </a>
+
+    <a href="https://t.me/MAFIYA_SYNDICATE" target="_blank" rel="noopener"
+       style="display:block;text-decoration:none;background:#1b2530;color:#fff;padding:13px;border-radius:10px;margin-top:10px;">
+       📢 Telegram Channel
+    </a>
+  </div>
+
+  <div class="panel settings">
+          <button>▣ <span>Change Payout Number</span> ›</button>
+          <button>♧ <span>Notification Settings</span> ›</button>
+          <button>◉ <span>Language <em>English</em></span> ›</button>
+          <button>?</span><span>Help & Support</span> ›</button>
+          <button>ⓘ <span>About Taka24</span> ›</button>
+          <button class="danger" id="logout2">↪ <span>Logout</span></button>
+        </div>
+        <div class="footer-brand"><span class="crown">♛</span><b>Taka24</b><small>Smart Earning • Better Tomorrow</small><small>Version 1.0.0</small></div>
+      </div>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="active" data-view="home"><span class="bn-icon">⌂</span><span>Home</span></button>
+      <button data-view="plans"><span class="bn-icon">▣</span><span>Plan</span></button>
+      <button data-view="claim"><span class="bn-icon">◉</span><span>Claim</span></button>
+      <button data-view="transactions"><span class="bn-icon">▤</span><span>Transactions</span></button>
+      <button data-view="profile"><span class="bn-icon">●</span><span>Profile</span></button>
+      <button data-view="settings"><span class="bn-icon">⚙</span><span>Settings</span></button>
+    </nav>
+  </section>
+</div>
+
+
+<!-- TAKА24 PREMIUM INPUT MODAL -->
+<div id="taka24InputModal" class="taka24-input-modal hidden">
+  <div class="taka24-input-card">
+
+    <div class="taka24-input-glow"></div>
+
+    <button class="taka24-input-close" id="taka24InputCancel" aria-label="Close">×</button>
+
+    <div class="taka24-input-crown">♛</div>
+
+    <div class="taka24-input-title" id="taka24InputTitle">
+      Enter Information
+    </div>
+
+    <div class="taka24-input-subtitle">
+      Taka24 secure account panel
+    </div>
+
+    <div class="taka24-input-wrap">
+      <span class="taka24-input-icon">◆</span>
+      <input
+        id="taka24InputField"
+        type="text"
+        autocomplete="off"
+        placeholder="Enter information"
+      />
+    </div>
+
+    <div class="taka24-input-actions">
+      <button class="taka24-modal-cancel" id="taka24InputCancel2" type="button">
+        Cancel
+      </button>
+      <button class="taka24-modal-ok" id="taka24InputOk" type="button">
+        Continue
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- PLAN PAYMENT MODAL -->
+<div id="paymentModal" class="payment-modal hidden">
+  <div class="payment-box">
+
+    <button class="payment-close" id="paymentClose">×</button>
+
+    <div class="payment-crown">♛</div>
+    <h2>Activate Plan</h2>
+    <p id="selectedPlanText">Selected Plan</p>
+
+    <div class="payment-choice-title">
+      Choose Payment Method
+    </div>
+
+    <div class="payment-choices">
+      <button class="payment-choice bkash-choice" data-method="bKash">
+        <span class="choice-logo bkash-logo">bK</span>
+        <span>bKash</span>
+      </button>
+
+      <button class="payment-choice nagad-choice" data-method="Nagad">
+        <span class="choice-logo nagad-logo">N</span>
+        <span>Nagad</span>
+      </button>
+    </div>
+
+    <div id="selectedPayment" class="selected-payment hidden">
+
+      <div class="selected-payment-head">
+        <span id="selectedLogo" class="choice-logo">bK</span>
+        <div>
+          <strong id="selectedMethod">bKash</strong>
+          <small>Send Money</small>
+        </div>
+      </div>
+
+      <div class="send-money-box">
+        <span>Send Money Number</span>
+        <strong id="paymentNumber">01613317181</strong>
+        <button id="copyPaymentNumber">Copy Number</button>
+      </div>
+
+      <div class="payment-form">
+        <label>Payment Amount</label>
+        <input id="paymentAmount" type="number"
+               inputmode="numeric"
+               placeholder="কত টাকা পাঠিয়েছেন?">
+
+        <label>Transaction ID (TrxID)</label>
+        <input id="paymentTrxId" type="text"
+               placeholder="TrxID লিখুন">
+
+        <button class="gold-btn" id="submitPlanRequest">
+          Submit Payment
+        </button>
+      </div>
+
+    </div>
+
+    <div class="payment-warning">
+      <b>প্রিয় স্যার, অবশ্যই Send Money করবেন 🖤💗</b>
+      <small>সঠিক নম্বরে টাকা পাঠিয়ে Amount ও TrxID দিয়ে Submit করুন।</small>
+    </div>
+
+    <div id="paymentPending" class="payment-pending hidden">
+      ⏳ Payment Status: <strong>Pending</strong>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="app.js"></script>
+</body>
+</html>
